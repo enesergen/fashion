@@ -22,13 +22,15 @@ public class User extends EntityBase implements UserDetails {
     private String firstName;
     @Column(name = "LASTNAME")
     private String lastName;
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL",unique = true)
     private String email;//also used username
     @Column(name = "PASSWORD")
     private String password;
     @Column(name = "ROLE")
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany
+    private List<Clothes> clothes;
 
 
     @Override
