@@ -10,7 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateClothesRequestDto {
-    private long id;
-    private String clothType;
+    private String username;
+    private long clothesId;
+    private String clothesType;
     private String color;
 }

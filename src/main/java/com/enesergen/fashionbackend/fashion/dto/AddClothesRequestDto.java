@@ -12,8 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddClothesRequestDto {
-    private long userId;
-    private String clotheType;
+    private String username;
+    private String clothesType;
     private String url;
     private String color;
 

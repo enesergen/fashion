@@ -7,6 +7,7 @@ import com.enesergen.fashionbackend.fashion.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 @Service
 public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserRegisterResponseDto register(UserRegisterRequestDto requestDto) {
@@ -55,9 +57,9 @@ public class UserServiceImp implements UserService {
 
     @Override
     public ChangePasswordResponseDto changePassword(ChangePasswordRequestDto requestDto) {
-        var user = userRepository.findById(Long.parseLong(requestDto.getUserId()));
-        if (user.isPresent() && user.get().getPassword().equals(requestDto.getOldPassword())) {
-            user.get().setPassword(requestDto.getNewPassword());
+        var user = userRepository.findByEmail(requestDto.getUsername());
+        if (user.isPresent() && passwordEncoder.matches(requestDto.getOldPassword(),user.get().getPassword())) {
+            user.get().setPassword(passwordEncoder.encode(requestDto.getNewPassword()));
             userRepository.save(user.get());
             return new ChangePasswordResponseDto(true, "Password was changed");
         } else {

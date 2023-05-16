@@ -1,9 +1,9 @@
 package com.enesergen.fashionbackend.fashion.controller;
 
-import com.enesergen.fashionbackend.fashion.dto.UserRegisterRequestDto;
-import com.enesergen.fashionbackend.fashion.dto.UserRegisterResponseDto;
+import com.enesergen.fashionbackend.fashion.dto.*;
 import com.enesergen.fashionbackend.fashion.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController implements UserApi{
     private final UserService userService;
+
+    @PutMapping("/changePassword")
+    @Override
+    public ResponseEntity<ChangePasswordResponseDto> changePassword(@RequestBody  ChangePasswordRequestDto requestDto) {
+        return ResponseEntity.ok(userService.changePassword(requestDto));
+    }
+
 
 
 }

@@ -10,5 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteClothesRequestDto {
-    private Long id;
+    private String username;
+    private long clothesId;
 }
