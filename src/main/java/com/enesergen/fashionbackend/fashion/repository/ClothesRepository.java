@@ -4,6 +4,7 @@ import com.enesergen.fashionbackend.fashion.entity.ClotheType;
 import com.enesergen.fashionbackend.fashion.entity.Clothes;
 import com.enesergen.fashionbackend.fashion.entity.Color;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.swing.plaf.synth.ColorType;
@@ -16,4 +17,9 @@ public interface ClothesRepository extends JpaRepository<Clothes, Long> {
     Optional<Clothes> findByUrl(String url);
 
     Optional<List<Clothes>> findByClotheType(ClotheType clotheType);
+
+    List<Clothes>findClothesByUser_Id(long id);
+
+
+    List<Clothes>getClothesByUser_IdAndClotheType(long userId,ClotheType clotheType);
 }
