@@ -2,9 +2,7 @@ package com.enesergen.fashionbackend.fashion.service;
 
 import com.enesergen.fashionbackend.fashion.dto.MakeCombineRequestDto;
 import com.enesergen.fashionbackend.fashion.dto.MakeCombineResponseDto;
-import com.enesergen.fashionbackend.fashion.entity.ClotheType;
-import com.enesergen.fashionbackend.fashion.entity.Clothes;
-import com.enesergen.fashionbackend.fashion.entity.Weather;
+import com.enesergen.fashionbackend.fashion.entity.*;
 import com.enesergen.fashionbackend.fashion.repository.ClothesRepository;
 import com.enesergen.fashionbackend.fashion.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +16,379 @@ import java.util.List;
 public class CombineServiceImp implements CombineService {
     private final UserRepository userRepository;
     private final ClothesRepository clothesRepository;
+
+    public Clothes colorSelection(Color color, List<Clothes> clothes) {
+
+        if (color.equals(Color.BLACK)) {// siyah her şey ile uyumlu
+            //BLACK - WHITE - BLUE - GREEN
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLUE || item.getColor() == Color.CYAN || item.getColor() == Color.NAVY || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GREEN || item.getColor() == Color.OLIVE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+        }
+        if (color.equals(Color.WHITE)) {
+            //mavi - kırmızı - siyah
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLUE || item.getColor() == Color.CYAN || item.getColor() == Color.NAVY || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GREEN || item.getColor() == Color.OLIVE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.RED)) {
+            //Sarı Beyaz Yeşil Mavi Siyah
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.SILVER || item.getColor() == Color.GRAY)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GREEN || item.getColor() == Color.OLIVE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLUE || item.getColor() == Color.CYAN || item.getColor() == Color.NAVY || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.LIME)) {
+            //sarı kahverengi gri krem beyaz
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.TEAL || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+        }
+        if (color.equals(Color.BLUE)) {
+            //kırmızı sarı beyaz kahverengi gri pembe
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA || item.getColor() == Color.SILVER)
+                    return item;
+            }
+        }
+        if (color.equals(Color.YELLOW)) {
+            //mavi lila mor gri siyah
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLUE || item.getColor() == Color.CYAN || item.getColor() == Color.NAVY || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.PURPLE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.CYAN)) {
+            //kırmızı sarı beyaz kahvregeni gri turuncu  pembe
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.TEAL || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA)
+                    return item;
+            }
+        }
+        if (color.equals(Color.MAGENTA)) {
+            //Kahve tonları kırmızı ve alt tonları
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAROON || item.getColor() == Color.RED)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.TEAL || item.getColor() == Color.NAVY)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.SILVER)) {
+            // fuşya kırmızı pembe mavi
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.PURPLE)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.GRAY)) {
+            // fuşya kırmızı pembe mavi
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.PURPLE)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.BLACK)
+                    return item;
+            }
+        }
+        if (color.equals(Color.MAROON)) {
+            // turkuaz krem pembe yeşil bej
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.CYAN)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAGENTA || item.getColor() == Color.PURPLE)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GREEN || item.getColor() == Color.OLIVE || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER || item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+
+                    return item;
+            }
+        }
+        if (color.equals(Color.OLIVE)) {
+            // sarı krem pembe turuncu siyah beyaz
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE || item.getColor() == Color.PURPLE)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.SILVER || item.getColor() == Color.GRAY)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER || item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.TEAL || item.getColor() == Color.NAVY)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK)
+
+                    return item;
+            }
+        }
+        if (color.equals(Color.GREEN)) {
+            // sarı kahverengi gri krem siyah beyaz
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.NAVY || item.getColor() == Color.TEAL)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.SILVER || item.getColor() == Color.GRAY)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK || item.getColor() == Color.WHITE)
+
+                    return item;
+            }
+        }
+        if (color.equals(Color.PURPLE)) {
+            // sarı kahverengi gri krem siyah beyaz
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.PURPLE || item.getColor() == Color.MAGENTA)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW || item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.MAROON)
+                    return item;
+            }
+
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK || item.getColor() == Color.WHITE)
+
+                    return item;
+            }
+        }
+        if (color.equals(Color.TEAL)) {
+            // kırmızı sarı beyaz kahverengi gri pembe
+            // sarı kahverengi gri krem siyah beyaz
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.YELLOW)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK || item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.OLIVE || item.getColor() == Color.NAVY)
+                    return item;
+            }
+        }
+        if (color.equals(Color.NAVY)) {
+            // cam böceği sarımsı yeşilimsi gri beyaz siyah açık sarı truncu  ve kırmızı
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.CYAN)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.LIME)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.GRAY || item.getColor() == Color.SILVER)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.BLACK || item.getColor() == Color.WHITE)
+                    return item;
+            }
+            for (Clothes item : clothes) {
+                if (item.getColor() == Color.RED || item.getColor() == Color.MAROON)
+                    return item;
+            }
+        }
+        return null;
+    }
 
     @Override
     public MakeCombineResponseDto makeCombine(MakeCombineRequestDto requestDto) {
@@ -49,7 +420,10 @@ public class CombineServiceImp implements CombineService {
                     .getClothesByUser_IdAndClotheType(user.get().getId(), ClotheType.SWEATSHIRT);
             var tshirt = clothesRepository
                     .getClothesByUser_IdAndClotheType(user.get().getId(), ClotheType.TSHIRT);
-            if(requestDto.getWeather().equals(Weather.SUMMER)){
+            if (requestDto.getWeather().equals(Weather.SUMMER)) {
+                if(dress!=null){
+
+                }
 
             }
 

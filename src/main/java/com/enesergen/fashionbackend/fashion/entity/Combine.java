@@ -8,6 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Combine {
     private String caps;
     private String sunglasses;
