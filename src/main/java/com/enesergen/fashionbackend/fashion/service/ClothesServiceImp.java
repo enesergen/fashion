@@ -8,7 +8,11 @@ import com.enesergen.fashionbackend.fashion.repository.ClothesRepository;
 import com.enesergen.fashionbackend.fashion.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -58,5 +62,41 @@ public class ClothesServiceImp implements ClothesService {
         }
 
         return new UpdateClothesResponseDto(true, "Error");
+    }
+
+    @Override
+    public List<GetMyAllClothesResponseDto> getMyAllClothes(GetMyAllClothesRequestDto requestDto) {
+        var user=userRepository.findByEmail(requestDto.getUsername());
+        if(user.isPresent()){
+            var clothes=clothesRepository.getClothesByUser_Id(user.get().getId());
+            if(clothes!=null){
+                List<GetMyAllClothesResponseDto>list=new ArrayList<>();
+                for(Clothes item:clothes){
+                    list.add(new GetMyAllClothesResponseDto(item.getId(),
+                            item.getClotheType(),
+                            item.getColor()));
+                }
+                return list;
+            }
+        }else{
+            throw new UsernameNotFoundException("Username not found");
+        }
+        return null;
+    }
+
+    @Override
+    public GetOneClothesResponseDto getOneClothes(GetOneClothesRequestDto requestDto) {
+        var user=userRepository.findByEmail(requestDto.getUsername());
+        if(user.isPresent()){
+            var clothes=clothesRepository.findById(requestDto.getClothesId());
+            if(clothes.isPresent()){
+                return new GetOneClothesResponseDto(clothes.get().getId(),
+                        clothes.get().getClotheType(),
+                        clothes.get().getColor());
+            }
+        }else{
+            throw new UsernameNotFoundException("Username not found");
+        }
+        return null;
     }
 }

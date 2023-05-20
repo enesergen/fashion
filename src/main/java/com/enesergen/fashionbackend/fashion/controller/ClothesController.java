@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/api/v1")
 @AllArgsConstructor
 @RestController
@@ -19,6 +21,7 @@ public class ClothesController implements ClothesApi {
         return ResponseEntity.ok(clothesService.addClothes(requestDto));
     }
 
+
     @DeleteMapping("/clothes")
     @Override
     public ResponseEntity<DeleteClothesResponseDto> deleteClothes(@RequestBody DeleteClothesRequestDto requestDto) {
@@ -29,5 +32,16 @@ public class ClothesController implements ClothesApi {
     @Override
     public ResponseEntity<UpdateClothesResponseDto> updateClothes(@RequestBody UpdateClothesRequestDto requestDto) {
         return ResponseEntity.ok(clothesService.updateClothes(requestDto));
+    }
+
+    @Override
+    @GetMapping("/clothes/getAll")
+    public ResponseEntity<List<GetMyAllClothesResponseDto>> getNyAllClothes(@RequestBody GetMyAllClothesRequestDto requestDto) {
+        return ResponseEntity.ok(clothesService.getMyAllClothes(requestDto));
+    }
+    @GetMapping("/clothes/getOne")
+    @Override
+    public ResponseEntity<GetOneClothesResponseDto> getOneClohtes(@RequestBody GetOneClothesRequestDto requestDto) {
+        return ResponseEntity.ok(clothesService.getOneClothes(requestDto));
     }
 }
