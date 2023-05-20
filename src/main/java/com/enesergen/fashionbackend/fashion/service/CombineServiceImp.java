@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -390,6 +391,13 @@ public class CombineServiceImp implements CombineService {
         return null;
     }
 
+    public String isUrlNull(Clothes clothes) {
+        if (clothes != null) {
+            return clothes.getUrl();
+        }
+        return null;
+    }
+
     @Override
     public MakeCombineResponseDto makeCombine(MakeCombineRequestDto requestDto) {
         var user = userRepository.findByEmail(requestDto.getUsername());
@@ -420,16 +428,154 @@ public class CombineServiceImp implements CombineService {
                     .getClothesByUser_IdAndClotheType(user.get().getId(), ClotheType.SWEATSHIRT);
             var tshirt = clothesRepository
                     .getClothesByUser_IdAndClotheType(user.get().getId(), ClotheType.TSHIRT);
+            List<Combine> combineList = new ArrayList<>();
             if (requestDto.getWeather().equals(Weather.SUMMER)) {
-                if(dress!=null){
 
+                if (dress != null) {
+                    for (Clothes item : dress) {//caps pant yok t shirt yok dress= full elbise
+                        var cHandbag = colorSelection(item.getColor(), handbag);
+                        var cShoes = colorSelection(item.getColor(), shoes);
+                        var cSunglasses = colorSelection(item.getColor(), sunglasses);
+                        combineList.add(new Combine(
+                                        null,
+                                        isUrlNull(cSunglasses),
+                                        null,
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        null,
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                    }
+                }
+                if (tshirt != null) {
+                    for (Clothes item : tshirt) {
+                        var cCaps = colorSelection(item.getColor(), caps);
+                        var cHandbag = colorSelection(item.getColor(), handbag);
+                        var cJacket = colorSelection(item.getColor(), jacket);
+                        var cPant = colorSelection(item.getColor(), pant);
+                        var cShort = colorSelection(item.getColor(), short_);
+                        var cSkirt = colorSelection(item.getColor(), skirts);
+                        var cSunglasses = colorSelection(item.getColor(), sunglasses);
+                        var cShoes = colorSelection(item.getColor(), shoes);
+
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cPant),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cSkirt),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cShort),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+
+                    }
+                }
+                if (shirt != null) {
+                    for (Clothes item : shirt) {
+                        var cCaps = colorSelection(item.getColor(), caps);
+                        var cHandbag = colorSelection(item.getColor(), handbag);
+                        var cJacket = colorSelection(item.getColor(), jacket);
+                        var cPant = colorSelection(item.getColor(), pant);
+                        var cShort = colorSelection(item.getColor(), short_);
+                        var cSkirt = colorSelection(item.getColor(), skirts);
+                        var cSunglasses = colorSelection(item.getColor(), sunglasses);
+                        var cShoes = colorSelection(item.getColor(), shoes);
+
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                isUrlNull(cSunglasses),
+                                isUrlNull(cJacket),
+                                item.getUrl(),
+                                isUrlNull(cHandbag),
+                                isUrlNull(cPant),
+                                isUrlNull(cShoes)));
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cSkirt),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                        combineList.add(new Combine(cCaps.getUrl(),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cShort),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                    }
                 }
 
             }
+            if (requestDto.getWeather().equals(Weather.WINTER)) {
 
+                if (sweater != null) {
+                    for (Clothes item : sweater) {//sweat üst kabulu
+                        var cCaps = colorSelection(item.getColor(), caps);
+                        var cHandbag = colorSelection(item.getColor(), handbag);
+                        var cShoes = colorSelection(item.getColor(), shoes);
+                        var cPant = colorSelection(item.getColor(), pant);
+                        var cJacket = colorSelection(item.getColor(), jacket);
+                        combineList.add(new Combine(
+                                        isUrlNull(cCaps),
+                                        null,
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cPant),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                    }
+                }
+                if (sweatshirt != null) {
+                    for (Clothes item : sweatshirt) {//sweatshirt üst kabulu
+                        var cCaps = colorSelection(item.getColor(), caps);
+                        var cHandbag = colorSelection(item.getColor(), handbag);
+                        var cShoes = colorSelection(item.getColor(), shoes);
+                        var cPant = colorSelection(item.getColor(), pant);
+                        var cJacket = colorSelection(item.getColor(), jacket);
+                        combineList.add(new Combine(
+                                        isUrlNull(cCaps),
+                                        null,
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cPant),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+                    }
+                }
+
+
+            }
+            return new MakeCombineResponseDto(combineList);
         } else {
             throw new UsernameNotFoundException("Username not found");
         }
-        return null;
     }
 }
