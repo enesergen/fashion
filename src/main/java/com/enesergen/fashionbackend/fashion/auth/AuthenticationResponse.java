@@ -1,5 +1,6 @@
 package com.enesergen.fashionbackend.fashion.auth;
 
+import com.enesergen.fashionbackend.fashion.dto.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
     private String token;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private UserInfo userInfo;
 }

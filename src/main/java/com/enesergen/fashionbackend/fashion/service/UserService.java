@@ -12,7 +12,6 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     public UserRegisterResponseDto register(UserRegisterRequestDto requestDto);
 
-    public UserResponseDto getUserByUsername(UserRequestDto requestDto);
 
     public ChangePasswordResponseDto changePassword(ChangePasswordRequestDto requestDto);
 

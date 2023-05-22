@@ -41,19 +41,6 @@ public class UserServiceImp implements UserService {
 
     }
 
-    @Override
-    public UserResponseDto getUserByUsername(UserRequestDto requestDto) {
-        var user = userRepository.findByEmail(requestDto.getEmail());
-        if (user.isPresent()) {
-            return new UserResponseDto(
-                    user.get().getFirstName(),
-                    user.get().getLastName(),
-                    user.get().getEmail()
-            );
-        } else {
-            throw new UsernameNotFoundException("Username not found");
-        }
-    }
 
     @Override
     public ChangePasswordResponseDto changePassword(ChangePasswordRequestDto requestDto) {

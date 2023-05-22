@@ -1,6 +1,7 @@
 package com.enesergen.fashionbackend.fashion.auth;
 
 import com.enesergen.fashionbackend.fashion.config.JwtService;
+import com.enesergen.fashionbackend.fashion.dto.UserInfo;
 import com.enesergen.fashionbackend.fashion.dto.UserRegisterRequestDto;
 import com.enesergen.fashionbackend.fashion.entity.Role;
 import com.enesergen.fashionbackend.fashion.entity.User;
@@ -41,6 +42,7 @@ public class AuthenticationService {
         ));
         var user=userRepository.findByEmail(request.getEmail()).orElseThrow();
         var jwtToken=jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).firstName(user.getFirstName()).lastName(user.getLastName()).email(user.getEmail()).build();
+        var userInfo=new UserInfo(user.getFirstName(), user.getLastName(), user.getEmail());
+        return AuthenticationResponse.builder().token(jwtToken).userInfo(userInfo).build();
     }
 }
