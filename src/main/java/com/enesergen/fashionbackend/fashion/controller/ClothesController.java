@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/v1")
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 public class ClothesController implements ClothesApi {
     private final UserService userService;
     private final ClothesService clothesService;
