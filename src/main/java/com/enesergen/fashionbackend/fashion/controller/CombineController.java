@@ -5,14 +5,12 @@ import com.enesergen.fashionbackend.fashion.dto.MakeCombineResponseDto;
 import com.enesergen.fashionbackend.fashion.service.CombineService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/combine")
+@CrossOrigin(origins = "http://localhost:8080")
 public class CombineController implements CombineApi{
     private final CombineService combineService;
     @Override
