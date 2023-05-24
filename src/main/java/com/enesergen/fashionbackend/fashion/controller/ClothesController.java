@@ -3,10 +3,11 @@ package com.enesergen.fashionbackend.fashion.controller;
 import com.enesergen.fashionbackend.fashion.dto.*;
 import com.enesergen.fashionbackend.fashion.service.ClothesService;
 import com.enesergen.fashionbackend.fashion.service.UserService;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/api/v1")
 @AllArgsConstructor
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class ClothesController implements ClothesApi {
     private final UserService userService;
     private final ClothesService clothesService;
-
     @PostMapping("/clothes")
     @Override
     public ResponseEntity<AddClothesResponseDto> addClothes(@RequestBody AddClothesRequestDto requestDto) {
@@ -36,12 +36,11 @@ public class ClothesController implements ClothesApi {
     }
 
     @Override
-    @PutMapping("/clothes/getAll")
-    public JSONPObject getNyAllClothes(@RequestBody GetMyAllClothesRequestDto requestDto) {
-        return new JSONPObject("data", clothesService.getMyAllClothes(requestDto));
+    @PostMapping("/clothes/getAll")
+    public ResponseEntity<List<GetMyAllClothesResponseDto>> getNyAllClothes(@RequestBody GetMyAllClothesRequestDto requestDto) {
+        return ResponseEntity.ok(clothesService.getMyAllClothes(requestDto));
     }
-
-    @PutMapping("/clothes/getOne")
+    @PostMapping("/clothes/getOne")
     @Override
     public ResponseEntity<GetOneClothesResponseDto> getOneClohtes(@RequestBody GetOneClothesRequestDto requestDto) {
         return ResponseEntity.ok(clothesService.getOneClothes(requestDto));
