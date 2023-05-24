@@ -74,7 +74,8 @@ public class ClothesServiceImp implements ClothesService {
                 for(Clothes item:clothes){
                     list.add(new GetMyAllClothesResponseDto(item.getId(),
                             item.getClotheType(),
-                            item.getColor()));
+                            item.getColor(),
+                            item.getUrl()));
                 }
                 return list;
             }

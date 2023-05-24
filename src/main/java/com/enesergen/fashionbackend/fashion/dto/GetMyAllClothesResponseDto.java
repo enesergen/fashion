@@ -15,4 +15,5 @@ public class GetMyAllClothesResponseDto {
     private long clothesId;
     private ClotheType clotheType;
     private Color color;
+    private String url;
 }

@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RequestMapping("/api/v1")
 @AllArgsConstructor
 @RestController
@@ -37,8 +35,9 @@ public class ClothesController implements ClothesApi {
 
     @Override
     @PostMapping("/clothes/getAll")
-    public ResponseEntity<List<GetMyAllClothesResponseDto>> getNyAllClothes(@RequestBody GetMyAllClothesRequestDto requestDto) {
-        return ResponseEntity.ok(clothesService.getMyAllClothes(requestDto));
+    public ResponseEntity<ClothesObj> getNyAllClothes(@RequestBody GetMyAllClothesRequestDto requestDto) {
+        ClothesObj clothesObj=new ClothesObj(clothesService.getMyAllClothes(requestDto));
+        return ResponseEntity.ok(clothesObj);
     }
     @PostMapping("/clothes/getOne")
     @Override
