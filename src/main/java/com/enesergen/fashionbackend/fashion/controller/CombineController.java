@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class CombineController implements CombineApi{
     private final CombineService combineService;
     @Override
-    @GetMapping("/makeCombine")
+    @PostMapping("/makeCombine")
     public ResponseEntity<MakeCombineResponseDto> makeCombine(@RequestBody MakeCombineRequestDto requestDto) {
         return ResponseEntity.ok(combineService.makeCombine(requestDto));
     }
