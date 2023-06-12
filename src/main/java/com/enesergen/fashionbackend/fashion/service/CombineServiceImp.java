@@ -459,7 +459,7 @@ public class CombineServiceImp implements CombineService {
                         var cSunglasses = colorSelection(item.getColor(), sunglasses);
                         var cShoes = colorSelection(item.getColor(), shoes);
 
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                         isUrlNull(cSunglasses),
                                         isUrlNull(cJacket),
                                         item.getUrl(),
@@ -469,7 +469,7 @@ public class CombineServiceImp implements CombineService {
                                 )
                         );
 
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                         isUrlNull(cSunglasses),
                                         isUrlNull(cJacket),
                                         item.getUrl(),
@@ -478,7 +478,7 @@ public class CombineServiceImp implements CombineService {
                                         isUrlNull(cShoes)
                                 )
                         );
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                         isUrlNull(cSunglasses),
                                         isUrlNull(cJacket),
                                         item.getUrl(),
@@ -501,14 +501,14 @@ public class CombineServiceImp implements CombineService {
                         var cSunglasses = colorSelection(item.getColor(), sunglasses);
                         var cShoes = colorSelection(item.getColor(), shoes);
 
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                 isUrlNull(cSunglasses),
                                 isUrlNull(cJacket),
                                 item.getUrl(),
                                 isUrlNull(cHandbag),
                                 isUrlNull(cPant),
                                 isUrlNull(cShoes)));
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                         isUrlNull(cSunglasses),
                                         isUrlNull(cJacket),
                                         item.getUrl(),
@@ -517,7 +517,7 @@ public class CombineServiceImp implements CombineService {
                                         isUrlNull(cShoes)
                                 )
                         );
-                        combineList.add(new Combine(cCaps.getUrl(),
+                        combineList.add(new Combine(isUrlNull(cCaps),
                                         isUrlNull(cSunglasses),
                                         isUrlNull(cJacket),
                                         item.getUrl(),
