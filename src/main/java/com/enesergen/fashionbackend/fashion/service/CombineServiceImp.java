@@ -469,6 +469,16 @@ public class CombineServiceImp implements CombineService {
                                         isUrlNull(cShoes)
                                 )
                         );
+                        combineList.add(new Combine(isUrlNull(cCaps),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(null),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cShort),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+
 
                     }
                 }
@@ -484,12 +494,15 @@ public class CombineServiceImp implements CombineService {
                         var cShoes = colorSelection(item.getColor(), shoes);
 
                         combineList.add(new Combine(isUrlNull(cCaps),
-                                isUrlNull(cSunglasses),
-                                isUrlNull(cJacket),
-                                item.getUrl(),
-                                isUrlNull(cHandbag),
-                                isUrlNull(cPant),
-                                isUrlNull(cShoes)));
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(cJacket),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cPant),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+
                     }
                 }
 
