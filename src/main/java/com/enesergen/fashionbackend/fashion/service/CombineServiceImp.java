@@ -469,6 +469,16 @@ public class CombineServiceImp implements CombineService {
                                         isUrlNull(cShoes)
                                 )
                         );
+                        combineList.add(new Combine(isUrlNull(cCaps),
+                                        isUrlNull(cSunglasses),
+                                        isUrlNull(null),
+                                        item.getUrl(),
+                                        isUrlNull(cHandbag),
+                                        isUrlNull(cShort),
+                                        isUrlNull(cShoes)
+                                )
+                        );
+
 
                     }
                 }
